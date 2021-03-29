@@ -1,0 +1,70 @@
+
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+{% block body %} 
+
+
+	<div class="login">
+		<h1 style="color: #ffff;margin-left: 25%;margin-top: 8%"> DataSec.AI - Data Anonymization Microservice </h1>
+		<!-- <div class="card" style="margin-top:5%;margin-left:33%;width:500px;">
+		<div class="log_left"> -->
+			<!-- <img class="img-responsive" src="{{url_for('static',filename='images/kolte.png')}}" alt=""/><br> -->
+			{% for category, message in get_flashed_messages(with_categories=True) %}
+		  		<div class="alert alert-{{category}}">{{ message }}</div>
+			{% endfor %}
+
+			<div class="log_box" style="margin-left: 500px;margin-right: 500px;">
+				<form action="{{url_for('login')}}" method="POST">
+					  <label for="email">User Email</label><br>
+					  <input type="text" id="email" name="email" value=""><br>
+					  <label for="pass">Password</label><br>
+					  <input type="password" id="pass" name="pass" namevalue="">
+						<button class="sign_btn" type="submit">Sign In</button>
+							<label>
+			        			 <input type="checkbox" checked="checked" name="remember"> Remember me
+								 <span class="pwd"><a href="#"  data-toggle="modal" class="s_up"  data-target="#myModal">Forgot Password?</a>
+								 </span>
+			      			</label>
+					  <label><span class="fl_r"><a class="s_up" href="/register">Sign Up</a></span></label>
+				</form>
+			<!-- </div>
+		</div> -->
+	</div>
+   
+<div class="modal fade" id="myModal" data-backdrop="false" role="dialog">
+		        <div class="modal-dialog" style="margin-left: 34.3%;">
+		            <!-- Modal content-->
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <h5 class="modal-title">
+		                        Forgot Password
+		                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                            <span aria-hidden="true">&times;</span>
+		                        </button>
+		                    </h5>
+		                </div>
+		                <div align="center" class="modal-body">
+		                    <form action="{{url_for('forgotpassword')}}" method="POST">
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                                <label for="email">User Email</label>
+		                            </div>
+		                            <div class="col-xs-9">
+		                                <input type="text" id="forgotemail" name="forgotemail" value="" />
+		                            </div>
+		                        </div>
+		                        <div class="row">
+		                            <div class="col-xs-12 text-right">
+		                                <button class="sign_btn" type="submit" style="margin-top:10px;width:45%">Send Email</button>
+		                            </div>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+</div>
+	 
+{% endblock %}

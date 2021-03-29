@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+{% block body %} 
+
+<div class="register">
+  <h1 style="color: #ffff;margin-left: 25%;margin-top: 8%"> DataSec.AI - Data Anonymization Microservice </h1>
+  <!-- <div class="col-md-6">
+    <div class="log_left s_top"> <img class="img-responsive" src="{{url_for('static',filename='images/kolte.png')}}" alt=""/> -->
+      <div class="log_box" style="margin-left: 500px;margin-right: 500px;margin-top: 2%;">
+        <form action="{{url_for('register')}}" method="POST">
+          <label for="fname">First Name</label>
+          <br>
+          <input type="text" id="fname" name="fname" value="">
+          <br>
+          <label for="lname">Last Name</label>
+          <br>
+          <input type="text" id="lname" name="lname" value="">
+          <br>
+          <label for="email">Email</label>
+          <br>
+          <input type="text" id="email" name="email" value="">
+          <br>
+          <label for="user">User Role</label>
+          <br>
+          <select name="usertype" id="usertype" onChange="myNewFunction(this);">
+          
+          <option selected disabled>Select An Option</option>
+          <option value="1">Admin</option>
+          <option value="2">Client</option>
+
+          </select>
+          <input type ="hidden" id="utype" name="utype" value="1">
+          <br>
+          <label for="pass">Password</label>
+          <br>
+          <input type="password" id="pass" name="pass" value="">
+          <br>
+          <label for="pwd_log">Confirm Password</label>
+          <br>
+          <input type="password" id="pwd" name="cnfpass" value="">
+          <button class="sign_btn" type="submit">Sign Up</button>
+          <label><span class="fl_r"><a class="s_up" href="/">Login</a></span></label>
+        </form>
+      </div>
+    <!-- </div>
+  </div> -->
+</div>
+
+
+<script charset="utf-8" type="text/javascript">
+
+  function myNewFunction(sel) {
+  var selvalue = sel.options[sel.selectedIndex].value;
+  document.getElementById('utype').value = selvalue;
+}
+
+</script>
+
+
+{% endblock %}

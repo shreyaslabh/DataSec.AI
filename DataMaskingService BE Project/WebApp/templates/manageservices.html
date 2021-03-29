@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/jquery.dataTables.1.10.21.min.css')}}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js">
+<script src="{{url_for('static',filename='js/jquery.dataTables.1.10.21.min.js')}}"></script>
+
+<div class="header">
+    <a href="#default" class="logo"><img src="{{url_for('static',filename='images/cloud2.png')}}" alt="" style="height:50px;margin-left: 40px;"/></a>
+    <div class="header-right">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <p>{{name}}<span> &nbsp;<img src="{{url_for('static',filename='images/user.png')}}" alt="" /></span></p>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/logout" style="color:black;">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-light bg-light">
+
+    <!-- <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #ffff;"> -->
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <img src="{{url_for('static',filename='images/seawoods2.png')}}" alt="" style="width:40px;margin-right:10px;"/> <a class="nav-link" href="/manageservices">Home</a>
+            </li>
+            {% if utype == 1%}
+            <li class="nav-item" style="margin-left: 47px;">
+                <img src="{{url_for('static',filename='images/human.png')}}" alt="" style="width:40px;"/> <a class="nav-link" href="/settings">Users</a>
+            </li>
+            {% endif %}
+            <!-- <li class="nav-item" style="margin-right: 10px">
+                <img src="{{url_for('static',filename='images/help.png')}}" alt="" />  <a class="nav-link" href="/help">Help</a>
+            </li> -->
+
+        </ul>
+    <!-- </div> -->
+</nav>
+
+<div class="sidebar">
+    <ul class="side_l">
+        
+        <li >
+            <img class="active" src="{{url_for('static',filename='images/services.png')}}"  style="width:40px;margin-right:10px;" title="Pause"/>
+            <a class="active" href="/viewservices">Services</a>
+        </li>
+        <li>
+            <img src="{{url_for('static',filename='images/f.png')}}" alt="pause" style="width:30px;margin-right:20px;" title="Pause"/>
+            <a href="/filtertypes">Filters</a>
+        </li>
+        <li>
+            <img src="{{url_for('static',filename='images/reports.png')}}" alt="pause" style="width:25px;margin-right:25px;" title="Pause"/>
+            <a href="/logs">Reports</a>
+        </li>
+    </ul>
+</div>
+
+<div class="wrapper_r">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{stype}}</h1>
+        </div>
+        <div class="col-md-6">
+            <a href="#">
+                <button class="wrap_btn" data-toggle="modal" data-target="#mymodal">Add New Service</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <form action="/search1" method="POST">
+                <input type="text" class="form-control servicename" placeholder="Search..." name="sname">
+                <!--<div class="input-group">
+                    <input type="text" class="form-control servicename" placeholder="Service Name" name="sname">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <img src="{{url_for('static',filename='images/search.png')}}" alt="" />
+                        </button>
+                    </div>
+                </div>-->
+            </form>
+        </div>
+    </div>
+    <div class="row tab_box p_20">
+        <table class="table table-stripped">
+            <thead class="table-head-rows">
+                <tr>
+                    <th style="width:10%;">Service ID</th>
+                    <th style="width:35%;">Service Name</th>
+                    <th style="width:20%;">Status</th>
+                    <th style="width:20%;">Action</th>
+                </tr>
+            </thead>
+            <tbody class="service-result table-body-rows">
+
+                {% for row in services %}
+
+                <tr>
+
+                    <td style="vertical-align:middle;">{{row[0]}}</td>
+                    <td style="vertical-align:middle;">{{row[1]}}</td>
+                    <td style="vertical-align:middle;">
+                        {% if row[2] == "active" %}
+                            <span style="text-transform:capitalize">{{row[2]}}<img src="{{url_for('static',filename='images/tick1.png')}}" alt="pause" style="width:30px;margin-left: 19px;" title="Pause"/></span>
+                        {% else %}
+                            <span style="text-transform:capitalize">{{row[2]}}<img src="{{url_for('static',filename='images/cross1.png')}}" alt="pause" style="width:30px;margin-left: 10px;" title="Pause"/></span>
+                        {% endif %}
+
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <a href="/sess/{{row[0]}}" class="btn {{row[4]}}"><img src="{{url_for('static',filename='images/edit5.png')}}" alt="" style="width:30px;" title="Edit"/></a>
+
+                        <a href="/{{row[3]}}/{{row[0]}}" class="btn">
+                            {% if row[4] == "disabled" %}
+                            <img src="{{url_for('static',filename='images/pause5.png')}}" alt="pause" style="width:30px;" title="Pause"/>
+                            {% else %}
+                            <img src="{{url_for('static',filename='images/play5.png')}}" alt="play" style="width:30px;" title="Play"/>
+                            {% endif %}
+                        </a>
+                        <a href="/delservice/{{row[0]}}" class="btn" onclick="return confirm('Are you sure to Delete?')"><img src="{{url_for('static',filename='images/bin5.png')}}" alt="" style="width:30px;" title="Delete"/></a>
+
+
+                    </td>
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <div id="mymodal" class="modal fade" role="dialog" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Add Service</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{url_for('sinsert')}}" method="POST">
+
+
+                        <div class="form-group">
+
+                            <label>Service Name</label>
+                            <input type="text" class="form-control" name="sname" required="1">
+
+
+                        </div>
+
+                        <div class="form-group">
+
+
+                            <button class="btn btn-primary" type="submit" style="background-color: #FF9900">Add Service</button>
+
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+
+                <div class="modal-footer">
+
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    {% endblock %}

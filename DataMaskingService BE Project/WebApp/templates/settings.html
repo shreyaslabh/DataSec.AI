@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+
+{% block body %}
+
+<div class="header">
+    <a href="#default" class="logo"><img src="{{url_for('static',filename='images/cloud2.png')}}" alt="" style="height:50px;margin-left: 40px;"/></a>
+    <div class="header-right">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <p>{{name}}<span> &nbsp;<img src="{{url_for('static',filename='images/user.png')}}" alt="" /></span></p>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/logout" style="color:black;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <img src="{{url_for('static',filename='images/seawoods2.png')}}" alt="" style="width:40px;margin-right:10px;"/> <a class="nav-link" href="/manageservices">Home</a>
+            </li>
+            <li class="nav-item active" style="margin-left: 47px;">
+                <img src="{{url_for('static',filename='images/human.png')}}" alt="" style="width:40px;"/> <a class="nav-link" href="/settings">Users</a>
+            </li>
+            <!-- <li class="nav-item">
+                <img src="{{url_for('static',filename='images/help.png')}}" alt="" />  <a class="nav-link" href="/help">Help</a>
+            </li> -->
+
+        </ul>
+    <!-- </div> -->
+</nav>
+<script>
+    $(document).ready(function () {
+        var toggler = $(".caret1");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+            toggler[i].addEventListener("click", function () {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+            });
+        }
+
+    })
+
+</script>
+
+<div class="sidebar">
+    <ul class="side_l">
+        
+        <li >
+            <img class="active" src="{{url_for('static',filename='images/services.png')}}"  style="width:40px;margin-right:10px;" title="Pause"/>
+            <a href="/viewservices">Services</a>
+        </li>
+        <li>
+            <img src="{{url_for('static',filename='images/f.png')}}" alt="pause" style="width:30px;margin-right:20px;" title="Pause"/>
+            <a href="/filtertypes">Filters</a>
+        </li>
+        <li>
+            <img src="{{url_for('static',filename='images/reports.png')}}" alt="pause" style="width:25px;margin-right:25px;" title="Pause"/>
+            <a href="/logs">Reports</a>
+        </li>
+    </ul>
+</div>
+
+<div class="wrapper_r">
+    <div class="row">
+        <div class="col-md-6">
+            {% if pagename == "" %}
+              <h1>All Users</h1>
+            {% else %}
+                <h1>{{pagename}}</h1>
+            {% endif %}
+
+            
+        </div>
+        <div class="col-md-6">
+            <a href="addnew.html">
+                <!--      <button class="wrap_btn">Add New Service</button>-->
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <form action="/settings" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="User Email" name="email">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <img src="{{url_for('static',filename='images/search.png')}}" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{category}}">{{ message }}</div>
+    {% endfor %}
+
+    {% if users %}
+    <div class="row tab_box p_20">
+        <table class="table table-bordered">
+            <thead class="table-head-rows">
+                <tr>
+                    <th>Date</th>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email ID</th>
+                    <th>User Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-body-rows">
+
+
+                {% for user in users %}
+
+
+                <tr>
+                    <td>{{user[7]}}</td>
+                    <td>{{user[0]}}</td>
+                    <td>{{user[2]}}</td>
+                    <td>{{user[3]}}</td>
+                    <td>{{user[4]}}</td>
+                    <td>{{user[1]}}</td>
+                    <td>{{user[6]}}</td>
+                    <td>
+
+                        <a href="" data-toggle="modal" data-target="#myModal{{user[0]}}"><img src="{{url_for('static',filename='images/edit5.png')}}" alt="" style="width:30px;"/></a>
+
+                    </td>
+                </tr>
+                <div class="modal fade" id="myModal{{user[0]}}" data-backdrop="false" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">
+                                    Edit User
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div align="center" class="modal-body">
+                                <form action="{{url_for('forgotpassword')}}" method="POST">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <a href="/approve_web/{{user[0]}}">
+                                                <label for="approve">Approve</label>
+                                                <img src="{{url_for('static',filename='images/tick1.png')}}" alt="" style="width:15px;"/>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <a href="/reject_web/{{user[0]}}">
+                                                <label for="approve">Reject</label>
+                                                <img src="{{url_for('static',filename='images/cross1.png')}}" alt="" style="width:15px;"/>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <a href="/waiting_web/{{user[0]}}">
+                                                <label for="approve">Waiting</label>
+                                                <img src="{{url_for('static',filename='images/edit5.png')}}" alt="" style="width:15px;"/>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <a href="/delete_user/{{user[0]}}">
+                                                <label for="approve">Delete</label>
+                                                <img src="{{url_for('static',filename='images/bin5.png')}}" alt="" style="width:15px;"/>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <br><div class="alert alert-info" style="margin-left:1%;width:60%;">No User Found!</div>
+    {% endif %}
+
+    {% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+
+<head>
+<meta charset="utf-8">
+<title>Sentinel Masking</title>
+   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+   <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+   <link rel="stylesheet" href="{{url_for('static',filename='css/modal.css')}}">
+</head>
+
+
+<style>
+
+.alert {
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.alert-success {
+  border-color: darkgreen;
+  background-color: green;
+  color: white;
+}
+
+.alert-error {
+  border-color: darkred;
+  background-color: red;
+  color: white;
+}
+
+.alert-info {
+  border-color: orange;
+  background-color: yellow;
+  color: black;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+
+</style>
+
+<body>
+    <script src="{{url_for('static',filename='js/jquery-1.11.3.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/bootstrap.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+
+
+{% block body %} {% endblock %}
+
+
+</body>
+</html>

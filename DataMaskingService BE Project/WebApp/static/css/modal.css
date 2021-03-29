@@ -1,0 +1,72 @@
+.modal-content{
+	border-radius: 0px;
+	top: 200;
+	width: 450px;
+}
+.modal{
+	margin-top: 150px;
+}
+.modal-body input[type=text]{	
+	width: 100%;
+	border: 1px solid #ebeced;
+	padding: 5px;
+	color: #333;
+}
+.modal-body label{
+	font-weight: normal;
+	padding: 5px 0px 0px 0px;
+}
+.modal-footer{
+	border: none;
+	
+}
+.up_btn{
+	background-color: #ed1651;
+	color: #fff;
+	border: none;
+	width: 150px;
+	padding: 7px 0px;
+	margin-right: 20px;
+	float: left;
+	border-radius: 0;
+}
+.ok_btn{
+	background-color: #ed1651;
+	color: #fff;
+	border: none;
+	width: 150px;
+	padding: 7px 0px;
+	text-align: center;
+	border-radius: 0;
+}
+.modal h3{
+	font-size: 16px;
+	padding: 0px 0px 10px 0px;
+}
+.w_600{
+	width: 600px;
+	height: 450px;
+	overflow-y: auto;
+}
+.t_l{
+	background-color: #F7F7F7;
+	padding: 0px;
+	margin: 0px;
+}
+.t_l table{
+	width: 100%;
+}
+.t_l table td{
+	padding: 10px;
+}
+.t_r{
+padding: 0px;
+	margin: 0px 0px 0px 0px;
+	
+}
+.t_r table{
+	width: 100%;
+}
+.t_r table td{
+	padding: 10px;
+}

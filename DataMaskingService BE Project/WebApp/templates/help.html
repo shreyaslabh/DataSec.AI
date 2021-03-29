@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+
+{% block body %} 
+  <div class="header"> <a href="#default" class="logo"><img src="{{url_for('static',filename='images/top_logo.png')}}" alt=""/></a>
+  <div class="header-right">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <p>{{name}}<span> &nbsp;<img src="{{url_for('static',filename='images/user.png')}}" alt=""/></span></p>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Logout</a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+       <img src="{{url_for('static',filename='images/home.png')}}" alt=""/> <a class="nav-link" href="/manageservices"> Home</a>
+      </li>
+      {% if utype == 1%}
+      <li class="nav-item">
+         <img src="{{url_for('static',filename='images/settings.png')}}" alt=""/> <a class="nav-link" href="/settings">Settings</a>
+      </li>
+      {% endif %}
+      <li class="nav-item active">
+        <img src="{{url_for('static',filename='images/help.png')}}" alt=""/>  <a class="nav-link" href="/help">Help</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+  
+    <div class="sidebar">
+    <ul class="side_l">
+      <li><a href="/viewservices">View All Services</a></li>
+      <li><a href="/filtertypes">Filter Types</a></li>
+      <li><a href="/logs">Reports</a></li>
+      </ul>
+    </div>
+  
+    <div class="wrapper_r">
+      <div class="row">
+        <div class="col-md-6">
+    <h1>Help</h1> 
+          </div>
+        <div class="col-md-6">
+          <a href="addnew.html">
+<!--      <button class="wrap_btn">Add New Service</button>-->
+            </a>
+          </div>
+      </div>
+<!--
+      <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+        <form>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <img src="images/search.png" alt=""/>
+      </button>
+    </div>
+  </div>
+</form>   
+        </div>        
+      </div>
+-->
+      <div class="row tab_box p_20">
+        <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link p_txt" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Contact Support
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapsed" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+       <p>Toll free : (+)123456789</p>
+      <a href="#"><p>sentineldatamasking@sutherlandglobal.com</p></a>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed p_txt" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          FAQ
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+       <h3>1. What is Data Masking?</h3>
+      <p>Anonymizing Data.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed p_txt" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Video
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <a href="#" class="btn" ><img src="{{url_for('static',filename='images/play.png')}}" alt=""/></a>
+      </div>
+    </div>
+  </div>
+          <div class="card">
+    <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed p_txt" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Feedback
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      
+        <form>
+          <br><input type="text" placeholder="Please give your feedback" style="margin-left:20%;width:50%;"><br><br>
+          <button type="submit" class="btn" style="margin-left:20%;color:white;background-color:#ed1651;">Submit</button><br><br>
+        </form>
+      
+    </div>
+  </div>
+</div>
+      
+      </div>
+      <script>
+        $('collapse').collapse()
+        $('#myCollapsible').collapse({
+  toggle: false
+})
+$('#myCollapsible').on('hidden.bs.collapse', function () {
+  // do something…
+})
+</script>
+
+{% endblock %}

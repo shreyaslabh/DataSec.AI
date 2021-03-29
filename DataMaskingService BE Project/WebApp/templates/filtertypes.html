@@ -1,0 +1,352 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+
+{% block body %}
+	<div class="header"> <a href="#default" class="logo"><img src="{{url_for('static',filename='images/cloud2.png')}}" alt="" style="height:50px;margin-left: 40px;"/></a>
+  <div class="header-right">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <p>{{name}}<span> &nbsp;<img src="{{url_for('static',filename='images/user.png')}}" alt=""/></span></p>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/logout" style="color:black;">Logout</a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+       <img src="{{url_for('static',filename='images/seawoods2.png')}}" alt="" style="width:40px;margin-right:10px;"/> <a class="nav-link" href="/manageservices"> Home</a>
+      </li>
+      {% if utype == 1%}
+      <li class="nav-item" style="margin-left: 47px;">
+         <img src="{{url_for('static',filename='images/human.png')}}" alt="" style="width:40px;"/> <a class="nav-link" href="/settings">Users</a>
+      </li>
+      {% endif %}
+      <!-- <li class="nav-item">
+        <img src="{{url_for('static',filename='images/help.png')}}" alt=""/>  <a class="nav-link" href="/help">Help</a>
+      </li> -->
+      
+    </ul>
+  <!-- </div> -->
+</nav>
+	
+<div class="sidebar">
+  <ul class="side_l">
+      
+      <li >
+          <img class="active" src="{{url_for('static',filename='images/services.png')}}"  style="width:40px;margin-right:10px;" title="Pause"/>
+          <a href="/viewservices">Services</a>
+      </li>
+      <li>
+          <img src="{{url_for('static',filename='images/f.png')}}" alt="pause" style="width:30px;margin-right:20px;" title="Pause"/>
+          <a class="active" href="/filtertypes">Filters</a>
+      </li>
+      <li>
+          <img src="{{url_for('static',filename='images/reports.png')}}" alt="pause" style="width:25px;margin-right:25px;" title="Pause"/>
+          <a href="/logs">Reports</a>
+      </li>
+  </ul>
+</div>
+	
+		<div class="wrapper_r">
+			<div class="row">
+				<div class="col-md-6">
+		<h1>Filter Types </h1>	
+					</div>
+				<div class="col-md-6">
+					
+					</div>
+			</div>
+<!--
+			<div class="row">
+				<div class="col-md-8"></div>
+				<div class="col-md-4">
+			<form>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <img src="images/search.png" alt=""/>
+      </button>
+    </div>
+  </div>
+</form>	
+		</div>		</div>
+-->
+			<div class="row tab_box p_20">
+				<div class="t_scoll">
+					<h3>Natural Language Processing - NLP, NLPRED</h3>
+				<table class="table table-bordered">
+  <thead class="table-head-rows">
+    <tr>
+      <th>FieldType</th>
+      <th>Description</th>
+      <th>Detection Method</th>
+    </tr>
+  </thead>
+    <tbody class="table-body-rows">
+    <tr>
+      <td>
+        <code>
+          <span>CREDIT_CARD</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>credit card number</em> is between 12 to 19 digits. <a href="https://en.wikipedia.org/wiki/Payment_card_number" rel="nofollow">https://en.wikipedia.org/wiki/Payment_card_number</a></p>
+      </td>
+      <td>Pattern match and checksum</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>CRYPTO</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>Crypto wallet number</em>. Currently only Bitcoin address is supported</p>
+      </td>
+      <td>Pattern match and checksum</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>DATE_TIME</span>
+        </code>
+      </td>
+      <td>
+        <p>Absolute or relative dates or periods or times smaller than a day.</p>
+      </td>
+      <td>Pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>DOMAIN_NAME</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>domain name</em> as defined by the DNS standard.</p>
+      </td>
+      <td>Pattern match and top level domain validation</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>EMAIL_ADDRESS</span>
+        </code>
+      </td>
+      <td>
+        <p>An
+          <em>email address</em> identifies an email box to which email messages are delivered</p>
+      </td>
+      <td>Pattern match and RFC-822 validation</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>IBAN_CODE</span>
+        </code>
+      </td>
+      <td>
+        <p>The
+          <em>International Bank Account Number (IBAN)</em> is an internationally agreed system of identifying bank accounts across national borders to facilitate the communication and processing of cross border transactions with a reduced risk of transcription errors.</p>
+      </td>
+      <td>Pattern match and checksum</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>IP_ADDRESS</span>
+        </code>
+      </td>
+      <td>
+        <p>An
+          <em>Internet Protocol (IP) address</em> (either IPv4 or IPv6).</p>
+      </td>
+      <td>Pattern match and checksum</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>NRP</span>
+        </code>
+      </td>
+      <td>
+        <p>A person’s
+          <em>Nationality, religious or political group</em>.</p>
+      </td>
+      <td>Word and phrase list</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>LOCATION</span>
+        </code>
+      </td>
+      <td>
+        <p>Name of politically or geographically defined location (cities, provinces, countries, international regions, bodies of water, mountains</p>
+      </td>
+      <td>Custom logic and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>PERSON</span>
+        </code>
+      </td>
+      <td>
+        <p>A full
+          <em>person name</em>, which can include first names, middle names or initials, and last names.</p>
+      </td>
+      <td>Custom logic and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>PHONE_NUMBER</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>telephone number</em>
+        </p>
+      </td>
+      <td>Custom logic, pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>US_BANK_NUMBER</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>US bank account number</em> is between 8 to 17 digits.</p>
+      </td>
+      <td>Pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>US_DRIVER_LICENSE</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>US driver license</em>.  according to <a href="https://ntsi.com/drivers-license-format/" rel="nofollow">https://ntsi.com/drivers-license-format/</a></p>
+      </td>
+      <td>Pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>US_ITIN</span>
+        </code>
+      </td>
+      <td>
+        <p><em>US Individual Taxpayer Identification Number (ITIN).</em> Nine digits that start with a "9" and contain a "7" or "8" as the 4 digit.</p>
+      </td>
+      <td>Pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>US_PASSPORT</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>US passport number</em> with 9 digits.</p>
+      </td>
+      <td>Pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>US_SSN</span>
+        </code>
+      </td>
+      <td>
+        <p>An
+          <em>US Social Security Number (SSN)</em> with 9 digits.
+          </p>
+      </td>
+      <td>Pattern match and context</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>UK_NHS</span>
+        </code>
+      </td>
+      <td>
+        <p>A
+          <em>UK NHS number</em> is 10 digits.</p>
+      </td>
+      <td>Pattern match and checksum</td>
+    </tr>
+  </tbody>
+</table>
+					
+					<h3>Regular Expressions - ASM, ASMRED</h3>
+					<table class="table table-bordered">
+  <thead class="table-head-rows">
+    <tr>
+      <th>FieldType</th>
+      <th>Description</th>
+      <th>Detection Method</th>
+    </tr>
+  </thead>
+    <tbody class="table-body-rows">
+    <tr>
+      <td>
+        <code>
+          <span>\w*[@]\w*\.</span>
+        </code>
+      </td>
+      <td>
+        <p>Email Address Regex</p>
+      </td>
+      <td>Email Address Pattern match</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>\d\d\d(|-| |\d|\d\d|\d )(|-)\d{3}(|-| )\d(| )\d{2,4}</span>
+        </code>
+      </td>
+      <td>
+        <p>Phone Number Regex</p>
+      </td>
+      <td>Phone Number Pattern match</td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          <span>\d{4}\s\d{4}\s\d{4}</span>
+        </code>
+      </td>
+      <td>
+        <p>US SSN Regex</p>
+      </td>
+      <td>US SSN Pattern match</td>
+    </tr> 
+  </tbody>
+</table>
+					</div>
+
+			</div>
+
+
+{% endblock %}

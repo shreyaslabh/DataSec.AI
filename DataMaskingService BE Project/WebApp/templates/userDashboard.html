@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Data Masking  {% endblock %}
+
+
+{% block body %}
+<script src="{{url_for('static',filename='js/jquery-ui.1.12.1.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='css/jquery-ui.1.12.1.css')}}">
+<script>
+    $(document).ready(function () {
+        $(".repdate").each(function () {
+            $(this).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'mm/dd/yy'
+            });
+
+        });
+
+        $("#searhbox").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".service-result tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+    })
+
+
+</script>
+
+<div class="header">
+    <a href="#default" class="logo"><img src="{{url_for('static',filename='images/cloud2.png')}}" alt="" style="height:50px;margin-left: 40px;"/></a>
+    <div class="header-right">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <p>{{name}}<span> &nbsp;<img src="{{url_for('static',filename='images/user.png')}}" alt="" /></span></p>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/logout" style="color:black;">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <img src="{{url_for('static',filename='images/seawoods2.png')}}" alt="" style="width:40px;margin-right:10px;"/> <a class="nav-link" href="/manageservices"> Home</a>
+            </li>
+            {% if utype == 1%}
+            <li class="nav-item" style="margin-left: 47px;">
+                <img src="{{url_for('static',filename='images/human.png')}}" alt="" style="width:40px;"/> <a class="nav-link" href="/settings">Users</a>
+            </li>
+            {% endif %}
+            <!-- <li class="nav-item">
+                <img src="{{url_for('static',filename='images/help.png')}}" alt="" />  <a class="nav-link" href="/help">Help</a>
+            </li> -->
+
+        </ul>
+    <!-- </div> -->
+</nav>
+
+
+<div class="sidebar">
+    <ul class="side_l">
+        <!-- <li><a href="/viewservices">View All Services</a></li>
+        <li><a href="/filtertypes">Filter Types</a></li>
+        <li><a class="active" href="/logs">Reports</a></li> -->
+        <li><a href="/logs">Service Reports</a></li>
+        <li><a class="active" href="/userlogs">User Reports</a></li>
+    </ul>
+</div>
+
+<div class="wrapper_r">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>User Reports</h1>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form action="/userlogs" method="POST">
+                <label>Start Date</label>
+                {% if startdate %}
+                <input class="repdate" type="text" name="startdate" id="date1" autocomplete="off" value="{{startdate}}" required>
+                {% else %}
+                 <input class="repdate" type="text" name="startdate" id="date1" autocomplete="off" required>
+                 {% endif %}
+                <label>End Date</label>
+                {% if enddate %}
+                <input class="repdate" type="text" name="enddate" id="date2" autocomplete="off" value="{{enddate}}" required>
+                {% else %}
+                <input class="repdate" type="text" name="enddate" id="date2" autocomplete="off" required>
+                {% endif %}
+                <button class="btn" type="submit" style="color:white;background-color:#FF9900;">Show Report</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searhbox" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <img src="{{url_for('static',filename='images/search.png')}}" alt="Search" />
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if data %}
+    <div class="row tab_box p_20">
+        
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date Of Creation</th>
+                        <!-- <th>Log ID</th> -->
+                        <th>U ID</th>
+                        <th>Log Data</th>
+                        <!-- <th>Service Status</th>
+                        <th>View Report</th> -->
+                    </tr>
+                </thead>
+                <tbody class="service-result">
+                    {% for service in data %}
+                   <!-- <form action="/view_user_report" method="POST"> -->
+                    <tr>
+                        <td>
+                            {{service[1]}}
+                            <input type="hidden" id="date" name="date" value="{{service[3]}}" />
+                        </td>
+                        <!-- <td>
+                            {{service[0]}} -->
+                            <input type="hidden" id="name" name="name" value="{{service[4]}}" />
+                        <!-- </td> -->
+                        <td>
+                            {{service[2]}}
+                            <input type="hidden" id="logid" name="logid" value="{{service[0]}}" />
+                        </td>
+                        <td>
+                            {{service[3]}}
+                            <input type="hidden" id="sname" name="sname" value="{{service[1]}}" />
+                        </td>
+                        <!-- <td>
+                            <span style="text-transform:capitalize">{{service[2]}}</span>
+                            <input type="hidden" id="status" name="status" value="{{service[2]}}">
+                        </td>
+                        <td>
+                            <button class="btn" type="submit"><img src="{{url_for('static',filename='images/eye.png')}}" alt="" /></button>
+                        </td> -->
+                    </tr>
+                    <!-- </form> -->
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+    </div>
+
+    {% endif %}
+
+
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{category}}">{{ message }}</div>
+    {% endfor %}
+
+
+    {% if logdata %}
+    <div class="row tab_box p_20">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Log Date</th>
+                    <th>Log Message</th>
+                    <th>Log Body</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in logdata %}
+
+                <tr>
+                    <td>{{data[1]}}</td>
+                    <td>{{data[2]}}</td>
+                    {% if data[2] == "Masks Applied to the Response" %}
+                    <td>
+                        <table class="table table-bordered">
+                            <thead>
+
+                                <tr>
+                                    <th>Original Data</th>
+                                    <th>Modified Data</th>
+                                </tr>
+
+                            </thead>
+                            {% for mask in data[3] %}
+                            {% for maskpair in mask %}
+
+                            <tr>
+                                <td>{{maskpair[0]}}</td>
+                                <td><span style='color:red;'>{{maskpair[1]}}</span></td>
+                            </tr>
+
+                            {% endfor %}
+                            {% endfor %}
+                        </table>
+                    </td>
+                    {% else %}
+                    <td>{{data[3]}}</td>
+                    {% endif %}
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+    {% endif %}
+    <script>
+        var datefield = document.createElement("input")
+        datefield.setAttribute("type", "date")
+        if (datefield.type != "date") { // if browser doesn't support input type="date", load files for jQuery UI Date Picker
+            document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+        }
+    </script>
+
+    <script>
+        if (datefield.type != "date") { // if browser doesn't support input type="date", initialize date picker widget:
+            jQuery(function ($) { // on document.ready
+                $('.repdate').datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+
+            })
+        }
+    </script>
+
+    {% endblock %}
