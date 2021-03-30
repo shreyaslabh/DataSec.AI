@@ -74,7 +74,7 @@
         <li><a href="/filtertypes">Filter Types</a></li>
         <li><a class="active" href="/logs">Reports</a></li> -->
         <li><a class="active"  href="/logs">Service Reports</a></li>
-        <li><a href="/userlogs">User Reports</a></li>
+        <!-- <li><a href="/userlogs">User Reports</a></li> -->
     </ul>
 </div>
 
@@ -124,7 +124,7 @@
     <div class="row tab_box p_20">
         
             <table class="table table-dark">
-                <thead>
+                <thead class="table-head-rows">
                     <tr>
                         <th>Date Of Creation</th>
                         <th>Creator Name</th>
@@ -134,7 +134,7 @@
                         <th>View Report</th>
                     </tr>
                 </thead>
-                <tbody class="service-result">
+                <tbody class="service-result table-body-rows">
                     {% for service in data %}
                    <form action="/view_report" method="POST">
                     <input type="hidden" name="startdate" value="{{startdate}}">
@@ -161,7 +161,7 @@
                             <input type="hidden" id="status" name="status" value="{{service[2]}}">
                         </td>
                         <td>
-                            <button class="btn" type="submit"><img src="{{url_for('static',filename='images/eye.png')}}" alt="" /></button>
+                            <button class="btn" type="submit"><img src="{{url_for('static',filename='images/eye.png')}}" alt="" style="width:30px;"/></button>
                         </td>
                     </tr>
                     </form>
@@ -214,9 +214,9 @@
                                 <td>{{maskpair[0]}}</td>
                                 <td><span style='color:red;'>{{maskpair[1]}}</span></td>
                                 {% if maskpair[0]==maskpair[1] %}
-                                <td>No</td>
+                                <td><img src="{{url_for('static',filename='images/cross1.png')}}" alt="pause" style="width:30px;margin-left: 19px;" title="No"/></td>
                                 {% else %}
-                                <td>Yes</td>
+                                <td><img src="{{url_for('static',filename='images/tick1.png')}}" alt="pause" style="width:30px;margin-left: 19px;" title="Yes"/></td>
                                 {% endif %}
                             </tr>
 
