@@ -88,7 +88,7 @@ logdata VARCHAR(500)
 );
 
 
-INSERT INTO users(utype,fname,lname,email,passval,approve) VALUES(1,'admin','admin','admin@sutherland.com','lockdown',1);
+INSERT INTO users(utype,fname,lname,email,passval,approve) VALUES(1,'admin','admin','admin@fcrit.com','lockdown',1);
 
 INSERT INTO filters(ftype,fname,farea,fprefix,fsuffix,maskid,unmask) VALUES(0,'Numbers Only','body','abc/','def/',1,0);
 INSERT INTO filters(ftype,fname,farea,fprefix,fsuffix,maskid,unmask) VALUES(0,'Characters Only','head','/abc/','/def/',2,0);

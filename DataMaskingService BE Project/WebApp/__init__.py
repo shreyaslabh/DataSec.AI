@@ -27,7 +27,7 @@ con = psycopg2.connect(user="postgres",
                                   password="shreyas",
                                   host="localhost",
                                   port="5432",
-                                  dbname="dm2")
+                                  dbname="data-masking-microservice")
 
 
 
