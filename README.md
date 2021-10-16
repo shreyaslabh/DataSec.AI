@@ -1,10 +1,7 @@
 
 <h1 align="center">
   <br>
-  <img src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/logo_.png" alt="Markdownify" width="200">
-  <br>
-  AmWell
-  <br>
+  <img src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/logo_.png" alt="Markdownify" width="400">
 </h1>
 
 <h3 align="center">TechStack</h3>
