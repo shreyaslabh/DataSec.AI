@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <img src="https://github.com/Shreyas-l/AmWell/blob/main/Documentation/AmWell.png" alt="Markdownify" width="200">
+  <img src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/logo_.png" alt="Markdownify" width="200">
   <br>
   AmWell
   <br>
