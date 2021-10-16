@@ -34,6 +34,8 @@
 
 ## Description
 
+https://www.youtube.com/watch?v=8bz6FWJLulk
+
 <p> Alzheimer's disease is an irreversible, progressive brain disorder that slowly destroys memory and thinking skills and, eventually, the ability to carry out the simplest tasks. The symptoms mainly first appear in their mid-60s.
 
 We have built an app that aids the elderly in the following tasks.
