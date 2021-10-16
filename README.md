@@ -15,13 +15,13 @@ https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-
 * DataSec.AI masks all the sensitive Personally Identifiable Information (PII) on the web
 * The masking logic works real-time, connects to the company VPN & intercepts all the network traffic
 * The masking logic can be configured by our clients, once their accounts are authorized by the admin
-* Several types of masks are configured to ensure that DataSec covers all types of PII, especially in the pharma industry
+* Several types of masks are configured to ensure that DataSec covers all types of PII, especially pharma industry
 * The software can be deployed as both Cloud and On-Premise setup 
-* Containerized deployment on Google Kubernetes Engine helps speed up the anonymization, scaling, healing, etc
+* Containerized deployment on Google Kubernetes Engine helps speed up the anonymization, scaling, healing
 * The CI/CD pipeline helps to push and deploy new code modifications with great ease
 * Leveraged Service Mesh Architecture to deploy DataSec on Google Kubernetes Engine
 * Squid Proxy acts as a Reverse Proxy capable of intercepting all the traffic on a given network
-* Squid Proxy acts as a sidecar to the Python ICAP Server which Masks/Unmasks PII Data from the intercepted traffic
+* Squid Proxy acts as a sidecar to the Python ICAP Server which Masks/Unmasks PII Data from intercepted traffic
 * Redis is used for in-memory caching of Masking logic, Request & Response Configurations, User ID Management
 * Flask framework is used to develop the Configuration Software
 * PostgreSQL Database is used for the purpose of RDBMS
