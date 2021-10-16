@@ -33,16 +33,16 @@ https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-
 * PostgreSQL Database is used for the purpose of RDBMS
 * SpaCy's Presidio Analyzer Engine is leveraged to detect & anonymize PII from requests and responses
 	
-## Demo
-	
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/58290353/137585762-4755f0c2-5b54-468b-8127-b377d3939f2c.gif)
-
 ## Architecture
 
 <p align="center">
  <div align="center"><img src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/DMS.png"/>
 </div>
 </p>
+
+## Demo
+	
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/58290353/137585762-4755f0c2-5b54-468b-8127-b377d3939f2c.gif)
 
 ## License
 
