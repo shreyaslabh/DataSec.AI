@@ -37,27 +37,6 @@ https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-
 	
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/58290353/137585762-4755f0c2-5b54-468b-8127-b377d3939f2c.gif)
 
-## How To Use
-
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-$ git clone https://github.com/amitmerchant1990/electron-markdownify
-
-# Go into the repository
-$ cd electron-markdownify
-
-# Install dependencies
-$ npm install
-
-# Run the app
-$ npm start
-```
-
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
-
 ## License
 
 MIT
