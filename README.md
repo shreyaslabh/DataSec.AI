@@ -9,10 +9,20 @@
  <div align="center"><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/python.png.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/docker.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/squid.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/spacy.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/gcp_.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/redis.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/postgres.png"/><img width="55" src="https://github.com/Shreyas-l/DataSec.AI/blob/main/Documentation/k8_.png"/></div>
 </p>
 
+<p align="center">
+  <a href="#intro">Introduction</a> •
+  <a href="#desc">Description</a> •
+  <a href="#arch">Architecture</a> •
+  <a href="#demo">Demonstration</a>
+</p>
+
+<div id="intro"></div>
 
 ## Introduction
 
 https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-8fd3-e903dc5d3ef5.mp4
+
+<div id="desc"></div>
 
 ## Description
 
@@ -33,6 +43,8 @@ https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-
 * PostgreSQL Database is used for the purpose of RDBMS
 * SpaCy's Presidio Analyzer Engine is leveraged to detect & anonymize PII from requests and responses
 	
+<div id="arch"></div>
+
 ## Architecture
 
 <p align="center">
@@ -40,7 +52,9 @@ https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-
 </div>
 </p>
 
-## Demo
+<div id="demo"></div>
+
+## Demonstration
 	
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/58290353/137585762-4755f0c2-5b54-468b-8127-b377d3939f2c.gif)
 
