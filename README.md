@@ -28,7 +28,7 @@ https://user-images.githubusercontent.com/58290353/137585333-99d3607e-4337-474f-
 * Leveraged Service Mesh Architecture to deploy DataSec on Google Kubernetes Engine
 * Squid Proxy acts as Reverse Proxy & intercepts all the traffic on a given network
 * Squid Proxy acts as sidecar to Python ICAP Server which Masks/Unmasks PII from intercepted traffic
-* Redis used for in-memory caching of Masking logic, Request & Response Configurations, UserID Management
+* Redis used for in-memory caching of Masking logic, Request Configurations, UserID Management
 * Flask framework is used to develop the Configuration Software
 * PostgreSQL Database is used for the purpose of RDBMS
 * SpaCy's Presidio Analyzer Engine is leveraged to detect & anonymize PII from requests and responses
